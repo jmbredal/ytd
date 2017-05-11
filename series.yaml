@@ -1,0 +1,20 @@
+# To get template use these flags:
+# youtube-dl --skip-download --write-info-json --playlist-items 1 <url>
+
+# Landet frå lufta
+# https://tv.nrk.no/serie/landet-fraa-lufta:
+  # outtmpl: %(series)s/%(season)s/%(playlist_index)s - %(title)s
+
+# Alien Civilizations - playlist av Isaac Arthur
+# https://www.youtube.com/watch?v=yXWe8g0zziw&list=PLIIOUpOge0Lu97HzMt_BJu36UMaItB1cm:
+  # outtmpl: '%(playlist)s/%(playlist_index)s - %(title)s'
+
+# Kurzgesagt
+https://www.youtube.com/user/Kurzgesagt/videos:
+  outtmpl: '%(uploader_id)s/%(title)s'
+  playlist_items: "1,2,3"
+
+# Scott Manley - Science Videos
+https://www.youtube.com/playlist?list=PLYu7z3I8tdEn2m_lLL3Vn7BDwkvMLo_hl:
+  outtmpl: 'Scott Manley/%(playlist)s/%(upload_date)s - %(title)s'
+  playlist_items: "1,2,3"
