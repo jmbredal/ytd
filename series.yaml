@@ -1,8 +1,16 @@
 # To get template use these flags:
 # youtube-dl --skip-download --write-info-json --playlist-items 1 <url>
 
-# Global options
+# My global options
 target_dir: /Users/bredal/Movies/youtube
+
+# youtube-dl global options
+# https://github.com/rg3/youtube-dl/blob/master/youtube_dl/YoutubeDL.py#L133
+ytdl_opts:
+  quiet: False
+  nooverwrites: True
+  writesubtitles: True
+  subtitleslangs: ['en', 'no']
 
 series:
   # Landet frå lufta
@@ -14,9 +22,13 @@ series:
     # outtmpl: '%(playlist)s/%(playlist_index)s - %(title)s'
 
   # Kurzgesagt
-  # https://www.youtube.com/user/Kurzgesagt/videos:
-    # outtmpl: '%(uploader_id)s/%(title)s'
-    # playlist_items: "1,2,3"
+  https://www.youtube.com/user/Kurzgesagt/videos:
+    outtmpl: '%(uploader_id)s/Videos/%(title)s'
+    playlist_items: "1, 2"
+
+  # Kurzgesagt
+  # 'https://www.youtube.com/playlist?list=PLFs4vir_WsTwEd-nJgVJCZPNL3HALHHpF':
+    # outtmpl: 'Kurzgesagt/%(playlist)s/%(upload_date)s - %(title)s'
 
   # Scott Manley - Science Videos
   # https://www.youtube.com/playlist?list=PLYu7z3I8tdEn2m_lLL3Vn7BDwkvMLo_hl:
@@ -24,6 +36,5 @@ series:
     # playlist_items: "1,2,3"
 
   # PBS Space Time - Curved Spacetime in General Relativity
-  https://www.youtube.com/playlist?list=PLsPUh22kYmNAmjsHke4pd8S9z6m_hVRur:
-    outtmpl: 'PBS Space Time/%(playlist)s/%(upload_date)s - %(title)s'
-    playlist_items: "1"
+  # https://www.youtube.com/playlist?list=PLsPUh22kYmNAmjsHke4pd8S9z6m_hVRur:
+    # outtmpl: 'PBS Space Time/%(playlist)s/%(upload_date)s - %(title)s'
