@@ -7,7 +7,6 @@ import yaml
 import youtube_dl
 
 SERIES_FILE = 'series.yaml'
-TARGET_DIR = 'Diverse'
 
 # Global options
 # https://github.com/rg3/youtube-dl/blob/master/youtube_dl/YoutubeDL.py#L133
@@ -20,16 +19,18 @@ OPTS = {
 
 def fetch_series():
     """Fetch all series defined in config file"""
-    series = yaml.load(open(SERIES_FILE))
+    config = yaml.load(open(SERIES_FILE))
+    series = config.get('series')
     for url in series.keys():
-        fetch_serie(url, series.get(url))
+        fetch_serie(config.get('target_dir', '.'), url, series.get(url))
 
 
-def fetch_serie(url, opts):
+def fetch_serie(target_dir, url, opts):
     """Fetch all results for this url"""
     options = OPTS.copy()
-    opts['outtmpl'] = '{}/{}.{}'.format(TARGET_DIR, opts.get('outtmpl'), '%(ext)s')
+    opts['outtmpl'] = '{}/{}.{}'.format(target_dir, opts.get('outtmpl'), '%(ext)s')
     options.update(opts)
+    print "Saving to %s" % opts['outtmpl']
     with youtube_dl.YoutubeDL(options) as ydl:
         ydl.download([url])
 
