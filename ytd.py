@@ -26,7 +26,7 @@ def fetch_series():
     config = yaml.load(open(SERIES_FILE))
     series = config.get('series')
     for url in series.keys():
-        fetch_serie(config, url, series.get(url))
+        fetch_serie(config, url, series.get(url).copy())
 
 
 def fetch_serie(config, url, opts):
