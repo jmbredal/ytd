@@ -31,7 +31,7 @@ def fetch_series():
 
 def fetch_serie(config, url, opts):
     """Fetch all results for this url"""
-    options = config.get('ytdl_opts')
+    options = config.get('ytdl_opts').copy()
     options['logger'] = MyLogger()
     opts['outtmpl'] = '{}/{}.{}'.format(config.get('target_dir', '.'),
                                         opts.get('outtmpl'), '%(ext)s')
